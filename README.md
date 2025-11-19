@@ -1,113 +1,54 @@
-Project Overview
+# Crypto Currency Dark Web Flow Detection
 
-This system analyzes cryptocurrency wallets using Web3 APIs and blockchain libraries to detect unusual transaction behavior often associated with dark web marketplaces.
 
-It offers:
+## Project Overview
+A React-based application that tracks cryptocurrency wallet transactions and detects potential dark web flow patterns through advanced blockchain analysis.
 
-Real-time transaction tracking
+## Key Features
+- Real-time transaction monitoring
+- Dark web flow detection algorithms
+- Multi-wallet tracking
+- Interactive analytics dashboard
+- Secure user authentication
 
-Dark web pattern detection algorithms
+## Technology Stack
+- **Frontend**: React, Redux, Chart.js
+- **Backend**: Node.js, Express
+- **Blockchain**: Web3.js, Ethers.js
+- **Database**: MongoDB (user data)
+- **Security**: JWT, Bcrypt
 
-Machine-assisted flow visualization
+## Getting Started
 
-Secure user authentication
+### Prerequisites
+- Node.js v14+
+- npm v6+
+- MongoDB Atlas account
 
-Analytics dashboards for wallet behavior insights
-
-🛠 Key Features
-
-✔ Real-time blockchain transaction monitoring
-
-✔ Dark web flow detection heuristics
-
-✔ Multi-wallet tracking support
-
-✔ Interactive analytics dashboard
-
-✔ Secure login system (JWT-based)
-
-✔ Modern UI with React & Redux
-
-🧰 Tech Stack
-Frontend
-
-React
-
-Redux
-
-Chart.js
-
-Backend
-
-Node.js
-
-Express
-
-Blockchain Interaction
-
-Web3.js
-
-Ethers.js
-
-Database
-
-MongoDB (Atlas)
-
-Security
-
-JWT Authentication
-
-Bcrypt password hashing
-
-🚀 Getting Started
-Prerequisites
-
-Make sure you have the following installed:
-
-Node.js v14+
-
-npm v6+
-
-MongoDB Atlas or Local MongoDB
-
-📦 Installation
-
-git clone https://github.com/nithishwarvijay/Crypto-Currency-dark-web-flow-detection-main.git
-
+### Installation
+```bash
+git clone https://github.com/Sanjay-sjnx/Crypto-Currency-dark-web-flow-detection.git
 cd Crypto-Currency-dark-web-flow-detection
-
 npm install
-
 npm start
+```
 
-🖥 Usage
+## Usage Examples
+![Analytics Dashboard](./project_images/app_image2.png)
+1. Add wallet addresses to monitor
+2. View transaction patterns
+3. Analyze potential dark web connections
 
-⭐ Analytics Dashboard
-
-Add one or more wallet addresses
-
-View real-time transaction flow
-
-Analyze potential dark web patterns
-
-Understand wallet behavior through visual charts
-
-📁 Project Structure
-
+## Project Structure
+```
 src/
-
-├── components/ # UI components
-
-├── actions/          # Redux action creators
-
+├── components/       # React components
+├── actions/          # Redux actions
 ├── reducers/         # Redux reducers
-
-├── App.js            # Main application logic
-
+├── App.js            # Main application
 └── index.js          # Entry point
+```
 
-🤝 Contributing
+## Contributing
+Pull requests welcome. For major changes, please open an issue first.
 
-Pull requests are welcome!
-
-For major changes, please open an issue first to discuss what you’d like to improve or add.
