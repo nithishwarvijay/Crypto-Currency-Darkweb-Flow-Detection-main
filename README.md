@@ -15,15 +15,14 @@ A React-based application that tracks cryptocurrency wallet transactions and det
 - **Frontend**: React, Redux, Chart.js
 - **Backend**: Node.js, Express
 - **Blockchain**: Web3.js, Ethers.js
-- **Database**: MongoDB (user data)
-- **Security**: JWT, Bcrypt
+- **Database**: SQL (user data)
+- **Security**: JWT
 
 ## Getting Started
 
 ### Prerequisites
 - Node.js v14+
 - npm v6+
-- MongoDB Atlas account
 
 ### Installation
 ```bash
