@@ -27,7 +27,7 @@ A React-based application that tracks cryptocurrency wallet transactions and det
 
 ### Installation
 ```bash
-git clone https://github.com/Sanjay-sjnx/Crypto-Currency-dark-web-flow-detection.git
+git clone https://github.com/nithishwarvijay/Crypto-Currency-dark-web-flow-detection.git
 cd Crypto-Currency-dark-web-flow-detection
 npm install
 npm start
