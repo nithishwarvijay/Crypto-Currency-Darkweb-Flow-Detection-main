@@ -1,7 +1,7 @@
 import './Analytics.css';
 import { useEffect,useState } from "react";
 import Coin from './Coin';
-import AnimatedCursor from 'react-animated-cursor';
+
 
 function Analytics() {
   const [coins, setCoins] = useState([]);
@@ -11,7 +11,11 @@ function Analytics() {
     fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
     .then(res => res.json())
     .then(data => {
-      setCoins(data);
+      if (Array.isArray(data)) {
+        setCoins(data);
+      } else {
+        console.log('API did not return an array:', data);
+      }
     }).catch(err => console.log(err))
   }, [])
 
@@ -25,28 +29,7 @@ function Analytics() {
 
   return (
     <>
-    <AnimatedCursor
-    innerSize={12}
-    outerSize={8}
-    color="0, 255, 0"
-    outerAlpha={0.3}
-    innerScale={0.7}
-    outerScale={5}
-    trailingSpeed={8}
-    clickables={[
-      'a', 'input[type="text"]', 'input[type="password"]', 'input[type="submit"]',
-      'input[type="image"]', 'label[for]', 'select', 'textarea', 'button', '.link'
-    ]}
-    hasBlendMode={true}
-    innerStyle={{
-      backgroundColor: 'rgb(0, 255, 0)',
-      boxShadow: '0 0 10px 2px rgba(0, 255, 0, 0.7)'
-    }}
-    outerStyle={{
-      border: '2px solid rgb(0, 255, 0)',
-      boxShadow: '0 0 15px 3px rgba(0, 255, 0, 0.4)'
-    }}
-/>
+
 
 
     <div className="coin-app">

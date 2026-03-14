@@ -23,6 +23,18 @@
     {
       "username": "Rudhra90",
       "password": "1234"
+    },
+    {
+      "username": "nithish",
+      "password": "123456"
+    },
+    {
+      "username": "testuser",
+      "password": ""
+    },
+    {
+      "username": "testuser_subagent",
+      "password": "test123"
     }
   ]
 }

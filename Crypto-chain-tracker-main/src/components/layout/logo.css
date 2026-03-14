@@ -1,100 +1,211 @@
-/* Restrict styles to navbar only */
+/* ─── Premium Application Navbar ─────────────────────────────────────────── */
+
 .navbar-container {
-  
-  padding: 10px 0;
   width: 100%;
-  /* position: relative; */
-  z-index: 1000; /* Ensure it's above other elements */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(6, 11, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
 }
 
-/* Logo */
-.navbar-container .logo-img {
-  width: 60px;
-  height: 40px;
-  border-radius: 7px;
-}
-
-/* Hamburger Menu Button */
-.navbar-container .navbar-toggler {
-  font-size: 24px;
-  background: none;
-  border: none;
+/* ─── Brand / Logo ───────────────────────────────────────────────────────── */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
   cursor: pointer;
-  color: white;
-  display: block;
-
+  transition: transform 0.2s ease;
 }
 
-/* Navbar Menu - Hidden by default */
-.navbar-container .navbar-menu {
-  /* display: none;
-  position: absolute;
-  top: 60px;
-  right: 20px; */
-  background-color: #444;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+.navbar-brand:hover {
+  transform: scale(1.02);
 }
 
-/* Show menu when active */
-.navbar-container .navbar-menu.active {
-  /* display: block; */
+.navbar-brand .logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+  transition: all 0.3s ease;
 }
 
-/* Navigation List */
-.navbar-container .navbar-nav {
+.navbar-brand:hover .logo-img {
+  border-color: rgba(34, 211, 238, 0.8);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+/* ─── Nav Links ──────────────────────────────────────────────────────────── */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav {
   list-style: none;
   padding: 0;
-  
-  display: flex;
-  flex-direction: row;
   margin: 0;
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Navigation Items */
-.navbar-container .nav-item {
-  padding: 10px;
+.nav-item {
+  padding: 0;
 }
 
-/* Navigation Links */
-.navbar-container .nav-link {
+.nav-link {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-  font-weight: bold;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+  color: #f0f6ff;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Active Page Highlight */
+.nav-link.active {
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.08);
+  border-color: rgba(34, 211, 238, 0.2);
+  box-shadow: inset 0 0 10px rgba(34, 211, 238, 0.05);
+}
+
+/* Logout styling */
+.nav-item:last-child .nav-link {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.05);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  margin-left: 10px;
+}
+
+.nav-item:last-child .nav-link:hover {
+  background: rgba(248, 113, 113, 0.15);
+  color: #fef2f2;
+  border-color: rgba(248, 113, 113, 0.5);
+  box-shadow: 0 0 12px rgba(248, 113, 113, 0.2);
+  transform: translateY(-1px);
+}
+
+/* ─── Hamburger Menu (Mobile) ────────────────────────────────────────────── */
+.navbar-toggler {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.navbar-toggler:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggler span {
   display: block;
-  padding: 8px 12px;
+  width: 22px;
+  height: 2px;
+  background: #cbd5e1;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navbar-container .nav-link:hover {
-  color: #ddd;
-}
-
-/* Responsive: Show menu inline on larger screens */
-@media (min-width: 768px) {
-  .navbar-container .navbar-menu {
-    display: flex !important;
-    position: static;
-    background: none;
-    padding: 0;
+/* ─── Responsive Media Queries ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.5rem;
   }
 
-  .navbar-container .navbar-toggler {
-    display: none;
-  }
-
-  .navbar-container .navbar-nav {
+  .navbar-toggler {
     display: flex;
-    gap: 20px;
+  }
+
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 14, 26, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px 24px 24px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .navbar-menu.active {
+    display: flex;
+    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 12px 16px;
+    font-size: 1rem;
+    justify-content: center;
+  }
+  
+  .nav-item:last-child .nav-link {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

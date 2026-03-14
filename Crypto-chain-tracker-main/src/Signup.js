@@ -1,52 +1,50 @@
 import React, { useState } from 'react';
-import AnimatedCursor from 'react-animated-cursor';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
 import './Signup.css';
 
-function App() {
+function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const history = useHistory();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log('Signup:', { username, password });
+    setError('');
+    setSuccess('');
+
+    try {
+      const response = await axios.post('http://localhost:5000/signup', { username, password });
+
+      if (response.data.success) {
+        setSuccess('Signup successful! Redirecting to login...');
+        setTimeout(() => {
+          history.push('/login');
+        }, 1500);
+      } else {
+        setError(response.data.message || 'Signup failed!');
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        setError(error.response.data.message || 'Signup failed!');
+      } else {
+        setError('Server error! Please try again.');
+      }
+    }
   };
 
   return (
     <>
-      <AnimatedCursor
-        innerSize={12}
-        outerSize={8}
-        color="0, 255, 0"
-        outerAlpha={0.3}
-        innerScale={0.7}
-        outerScale={5}
-        trailingSpeed={8}
-        clickables={[
-          'a',
-          'input[type="text"]',
-          'input[type="password"]',
-          'input[type="submit"]',
-          'input[type="image"]',
-          'label[for]',
-          'select',
-          'textarea',
-          'button',
-          '.link'
-        ]}
-        hasBlendMode={true}
-        innerStyle={{
-          backgroundColor: 'rgb(0, 255, 0)',
-          boxShadow: '0 0 10px 2px rgba(0, 255, 0, 0.7)'
-        }}
-        outerStyle={{
-          border: '2px solid rgb(0, 255, 0)',
-          boxShadow: '0 0 15px 3px rgba(0, 255, 0, 0.4)'
-        }}
-      />
+
       <div className="signup-container">
         <div className="signup-box">
           <h1 className="signup-title">Create Account</h1>
+          
+          {error && <p className="error-message" style={{ color: '#ff4444', textAlign: 'center', marginBottom: '10px' }}>{error}</p>}
+          {success && <p className="success-message" style={{ color: '#00c851', textAlign: 'center', marginBottom: '10px' }}>{success}</p>}
           
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -86,7 +84,7 @@ function App() {
 
           <div className="login-link">
             Already have an account?
-            <a href="#login">Sign in</a>
+            <a href="/login">Sign in</a>
           </div>
         </div>
       </div>
@@ -94,4 +92,4 @@ function App() {
   );
 }
 
-export default App;
+export default Signup;

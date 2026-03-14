@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import AnimatedCursor from 'react-animated-cursor';
+
 import './Login.css';
 
 const Login = ({ onLogin }) => {
@@ -30,36 +30,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <>
-      <AnimatedCursor
-        innerSize={12}
-        outerSize={8}
-        color="0, 255, 0"
-        outerAlpha={0.3}
-        innerScale={0.7}
-        outerScale={5}
-        trailingSpeed={8}
-        clickables={[
-          'a',
-          'input[type="text"]',
-          'input[type="password"]',
-          'input[type="submit"]',
-          'input[type="image"]',
-          'label[for]',
-          'select',
-          'textarea',
-          'button',
-          '.link'
-        ]}
-        hasBlendMode={true}
-        innerStyle={{
-          backgroundColor: 'rgb(0, 255, 0)',
-          boxShadow: '0 0 10px 2px rgba(0, 255, 0, 0.7)'
-        }}
-        outerStyle={{
-          border: '2px solid rgb(0, 255, 0)',
-          boxShadow: '0 0 15px 3px rgba(0, 255, 0, 0.4)'
-        }}
-      />
+
       <div className="login-container">
         <div className="login-box">
           <h1 className="login-title">Welcome Back</h1>
@@ -104,7 +75,7 @@ const Login = ({ onLogin }) => {
 
           <div className="signup-link">
             Don't have an account?
-            <a href="#signup">Sign up</a>
+            <a href="/signup">Sign up</a>
           </div>
         </div>
       </div>

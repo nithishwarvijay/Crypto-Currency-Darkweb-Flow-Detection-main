@@ -1,12 +1,4 @@
 
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: gray;
-  }
-
   .search {
     color: red;
   }

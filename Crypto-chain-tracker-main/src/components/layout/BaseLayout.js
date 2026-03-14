@@ -1,40 +1,76 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import logo from '../logo.jpg';
 import "./logo.css";
 
 const BaseLayout = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const isAuthenticated = !!localStorage.getItem("token");
+  const history = useHistory();
+  const location = useLocation();
 
-  // Toggle menu function
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+  const close = () => setMenuOpen(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    close();
+    history.push("/login");
+    window.location.reload();
   };
+
+  const isActive = (path) =>
+    location.pathname === path ? "nav-link active" : "nav-link";
 
   return (
     <>
       <div className="navbar-container">
         <nav className="navbar">
+          {/* Brand */}
           <div className="navbar-brand">
-            <img className="logo-img" src={logo} alt="Logo" />
+            <img className="logo-img" src={logo} alt="CryptoChain Logo" />
           </div>
 
-          {/* Navbar Menu - Appears when menuOpen is true */}
-          <div className={`navbar-menu ${menuOpen ? "active" : ""}`}>
+          {/* Hamburger */}
+          <button
+            className="navbar-toggler"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle navigation"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          {/* Links */}
+          <div className={`navbar-menu${menuOpen ? " active" : ""}`}>
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={() => setMenuOpen(false)}>Signup</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/analytics" onClick={() => setMenuOpen(false)}>Analytics</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
-              </li>
+              {!isAuthenticated ? (
+                <>
+                  <li className="nav-item">
+                    <Link className={isActive("/signup")} to="/signup" onClick={close}>Sign Up</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className={isActive("/login")} to="/login" onClick={close}>Login</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link className={isActive("/balance")} to="/balance" onClick={close}>Dashboard</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className={isActive("/analytics")} to="/analytics" onClick={close}>Analytics</Link>
+                  </li>
+                  <li className="nav-item">
+                    <button className="nav-link" onClick={handleLogout}>Logout</button>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </nav>
       </div>
+
       {props.children}
     </>
   );
