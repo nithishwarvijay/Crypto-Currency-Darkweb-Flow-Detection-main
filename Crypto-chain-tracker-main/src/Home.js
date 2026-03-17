@@ -73,8 +73,7 @@ const Home = () => {
           <a href="#stats" className="nav-link">Stats</a>
         </div>
         <div className="nav-buttons">
-          <Link to="/login" className="nav-button login">Login</Link>
-          <Link to="/signup" className="nav-button signup">Sign Up</Link>
+          <Link to="/balance" className="nav-button login">Dashboard</Link>
         </div>
       </nav>
 
@@ -92,11 +91,11 @@ const Home = () => {
           Real-time multi-chain wallet tracking with an AI-powered heuristic engine that flags suspicious activity, mixer interactions, and high-risk transaction patterns.
         </p>
         <div className="cta-buttons">
-          <Link to="/signup" className="cta-button primary">
+          <Link to="/balance" className="cta-button primary">
             Get Started <ArrowRight className="button-icon" />
           </Link>
-          <Link to="/login" className="cta-button secondary">
-            Login to Account
+          <Link to="/analytics" className="cta-button secondary">
+            View Analytics
           </Link>
         </div>
 
@@ -146,9 +145,9 @@ const Home = () => {
       {/* CTA Banner */}
       <section className="cta-banner">
         <h2>Ready to start tracking?</h2>
-        <p>Create a free account and monitor any wallet in seconds.</p>
-        <Link to="/signup" className="cta-button primary">
-          Create Free Account <ArrowRight className="button-icon" />
+        <p>Monitor any wallet in seconds — no account required.</p>
+        <Link to="/balance" className="cta-button primary">
+          Launch Dashboard <ArrowRight className="button-icon" />
         </Link>
       </section>
 
@@ -160,8 +159,8 @@ const Home = () => {
         </div>
         <p className="footer-copy">© 2025 CryptoChain Tracker. No KYC. No tracking. Just data.</p>
         <div className="footer-links">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/balance">Dashboard</Link>
+          <Link to="/analytics">Analytics</Link>
         </div>
       </footer>
     </div>
